@@ -15,7 +15,7 @@
   \**********************/
 /***/ (() => {
 
-eval("\n\n//# sourceURL=webpack://weather-app/./src/index.js?");
+eval("// fetch data from weather API; take location as input\nasync function fetchWeather(location) {\n  const apiKey = 'ab36ae6f835d44c781e191306230411';\n\n  const response = await fetch(\n    `https://api.weatherapi.com/v1/forecast.json?key=${apiKey}&q=${location}&days=3&alerts=yes`\n  );\n  const weatherData = await response.json();\n  // HANDLE ERRORS!\n\n  return weatherData;\n}\n\n\n// fetchWeather('philadelphia', 'current').then(res => console.log(res));\nfetchWeather('philadelphia').then(res => console.log(res));\n\n\n//# sourceURL=webpack://weather-app/./src/index.js?");
 
 /***/ })
 
