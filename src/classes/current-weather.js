@@ -7,7 +7,8 @@ export default class CurrentWeather {
     feelsLikeF,
     humidity,
     isDay,
-    lastUpdated,
+    time,
+    location,
     moonPhase,
     sunrise,
     sunset,
@@ -25,7 +26,8 @@ export default class CurrentWeather {
     this.feelsLikeF = feelsLikeF;
     this.humidity = humidity;
     this.isDay = isDay === 1;
-    this.lastUpdated = lastUpdated;
+    this.time = time;
+    this.location = location;
     this.moonPhase = moonPhase;
     this.sunrise = sunrise;
     this.sunset = sunset;

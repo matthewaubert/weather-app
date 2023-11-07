@@ -2,6 +2,16 @@ import CurrentWeather from './classes/current-weather';
 import DailyForecast from './classes/daily-forecast';
 import HourlyForecast from './classes/hourly-forecast';
 
+// initialize page to philadelphia weather
+export default async function getWeatherData(location, type) {
+  const response = await fetchWeather(location);
+  console.log(response);
+  const data = processData(response, type);
+  console.log(data);
+
+  return data;
+}
+
 // fetch data from weather API; take location as input
 async function fetchWeather(location) {
   const apiKey = 'ab36ae6f835d44c781e191306230411';
@@ -28,6 +38,11 @@ function processData(weatherData, type) {
       weatherData.current.humidity,
       weatherData.current.is_day,
       weatherData.current.last_updated,
+      {
+        city: weatherData.location.name,
+        country: weatherData.location.country,
+        region: weatherData.location.region,
+      },
       weatherData.forecast.forecastday[0].astro.moon_phase,
       weatherData.forecast.forecastday[0].astro.sunrise,
       weatherData.forecast.forecastday[0].astro.sunset,
@@ -69,5 +84,3 @@ function processData(weatherData, type) {
     return forecasts;
   }
 }
-
-export { fetchWeather, processData };

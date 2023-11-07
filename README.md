@@ -28,6 +28,7 @@ The look of the page should change based on the data - perhaps by changing the b
      - humidity
      - isDay
      - lastUpdated
+     - location
      - moonPhase,
      - sunrise,
      - sunset,
