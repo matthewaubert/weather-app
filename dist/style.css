@@ -4,6 +4,21 @@
 /* general */
 
 :root {
+  --gray-050: #f8fafc;
+  --gray-100: #f1f5f9;
+  --gray-200: #e5e7eb;
+  --gray-300: #d1d5db;
+  --gray-400: #9ca3af;
+  --gray-500: #6b7280;
+  --gray-600: #4b5563;
+  --gray-700: #374151;
+  --gray-800: #1F2937;
+  --sky-200: #BAE6FD;
+  --sky-300: #7DD3FC;
+  --sky-500: #0EA5E9;
+  --sky-600: #0284c7;
+  --sky-700: #0369a1;
+  --sky-800: #075985;
   --gap-050: 0.2rem;
   --gap-100: 0.4rem;
   --gap-150: 0.6rem;
@@ -12,6 +27,9 @@
   --gap-300: 1.2rem;
   --gap-400: 1.6rem;
   --gap-500: 2.0rem;
+  --gap-600: 2.4rem;
+  --gap-700: 2.8rem;
+  --gap-800: 3.2rem;
   --transition-fast: all .1s ease-in-out;
   --transition-slow: all .4s ease-in-out;
   --font-stack: 'Roboto', 'Helvetica', 'Arial', sans-serif;
@@ -34,4 +52,54 @@ html, body {
 
 a {
   text-decoration: none;
+}
+
+button, input[type=search] {
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  appearance: none;
+  border: none;
+}
+
+button:hover {
+  cursor: pointer;
+}
+
+
+/* header */
+
+header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+form {
+  position: relative;
+}
+
+#search-input {
+  background-color: var(--sky-800);
+  border-radius: 24px;
+  color: white;
+  padding: var(--gap-100) var(--gap-600) var(--gap-100) var(--gap-200);
+  width: 15rem;
+  height: 2rem;
+}
+
+#search-input::placeholder {
+  color: var(--gray-400);
+}
+
+#search-submit {
+  background-color: transparent;
+  position: absolute;
+  right: 10px;
+  top: 6px;
+}
+
+button > svg {
+  fill: white;
+  width: 1.25rem;
+  height: 1.25rem;
 }
