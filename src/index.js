@@ -2,12 +2,30 @@ import CurrentWeather from './classes/current-weather';
 import DailyForecast from './classes/daily-forecast';
 import HourlyForecast from './classes/hourly-forecast';
 
+// cache DOM
+const form = document.querySelector('form');
+const search = form.querySelector('#search');
+
+// add event listeners
+form.addEventListener('submit', handleSearch);
+
+// prevent for submission and fetch weather
+async function handleSearch(e) {
+  e.preventDefault();
+
+  const response = await fetchWeather(search.value);
+  console.log(response);
+  const data = processData(response, 'current');
+  console.log(data);
+}
+
 // fetch data from weather API; take location as input
 async function fetchWeather(location) {
   const apiKey = 'ab36ae6f835d44c781e191306230411';
 
   const response = await fetch(
-    `https://api.weatherapi.com/v1/forecast.json?key=${apiKey}&q=${location}&days=3`
+    `https://api.weatherapi.com/v1/forecast.json?key=${apiKey}&q=${location}&days=3`,
+    { mode: 'cors' }
   );
   const weatherData = await response.json();
   // HANDLE ERRORS!
@@ -41,7 +59,7 @@ function processData(weatherData, type) {
     const forecasts = [];
     // iterate over all forecast days
     weatherData.forecast.forecastday.forEach((day) => {
-      // create new Forecast instance and push to forecasts array
+      // create new DailyForecast instance and push to forecasts array
       forecasts.push(
         new DailyForecast(
           day.day.condition,
@@ -57,7 +75,9 @@ function processData(weatherData, type) {
     return forecasts;
   } else if (type === 'hourly') {
     const forecasts = [];
+    // iterate over all forecast hours of first day
     weatherData.forecast.forecastday[0].hour.forEach((hour) => {
+      // create new HourlyForecast instance and push to forecasts array
       forecasts.push(
         new HourlyForecast(hour.condition, hour.temp_c, hour.temp_f, hour.time)
       );
@@ -66,8 +86,3 @@ function processData(weatherData, type) {
     return forecasts;
   }
 }
-
-// fetchWeather('philadelphia').then((res) => console.log(res));
-fetchWeather('philadelphia')
-  .then((res) => processData(res, 'current'))
-  .then((res) => console.log(res));
