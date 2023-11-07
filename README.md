@@ -19,6 +19,37 @@ The look of the page should change based on the data - perhaps by changing the b
 1. Write functions that hit the API. They should take a location and return weather data for that location. To start, simply console.log() the information.
 
 1. Write functions that _process_ the JSON data I will receive from the API and return an object with only the data that I require for the app
+   - current data:
+     - chanceOfRain
+     - cloud
+     - condition
+     - feelsLikeC
+     - feelsLikeF
+     - humidity
+     - isDay
+     - lastUpdated
+     - moonPhase,
+     - sunrise,
+     - sunset,
+     - tempC
+     - tempF
+     - uv
+     - windDegree
+     - windKph
+     - windMph
+   - daily forecast data:
+     - condition
+     - date
+     - maxTempC
+     - maxTempF
+     - minTempC
+     - minTempF
+   - hourly forecast data:
+     - condition
+     - time
+     - tempC
+     - tempF
+     - time
 
 1. Set up a simple form that enables the user to input their location. The app should then fetch the weather info based on the input location (still simply console.log() the info).
 
@@ -27,3 +58,7 @@ The look of the page should change based on the data - perhaps by changing the b
 1. Add styling
 
 1. Optional: Add a 'loading' component that displays from the time the form is submitted until the info comes back from the API. (Use DevTools to test for low-end devices.)
+
+### Credits
+
+Powered by <a href="https://www.weatherapi.com/" title="Free Weather API">WeatherAPI.com</a>

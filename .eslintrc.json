@@ -12,6 +12,14 @@
         "sourceType": "module"
     },
     "rules": {
-        "no-console": "off"
+        "consistent-return": "off",
+        "no-else-return": ["error", {
+            "allowElseIf": true
+        }],
+        "no-console": "off",
+        "no-use-before-define": ["error", {
+            "functions": false,
+            "classes": false
+        }]
     }
 }
