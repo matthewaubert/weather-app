@@ -153,8 +153,8 @@ button > svg {
 
 .current-primary {
   display: grid;
-  /* gap: var(--gap-200); */
   grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto auto;
   place-items: center;
 }
 
@@ -171,3 +171,5 @@ button > svg {
 .current-primary .current-feelslike {
   color: var(--sky-300);
 }
+
+/* current weather secondary */

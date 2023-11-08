@@ -1,4 +1,4 @@
-import { format, parse } from 'date-fns';
+import { format } from 'date-fns';
 import getWeatherData from './weather-data';
 
 // cache DOM
@@ -58,10 +58,7 @@ function renderLocation(data) {
   location.city.innerText = data.location.city;
   location.region.innerText = data.location.region;
   location.country.innerText = data.location.country;
-  location.time.innerText = format(
-    parse(data.time, 'yyyy-MM-dd kk:mm', new Date()),
-    'PPPPp'
-  );
+  location.time.innerText = format(data.time, 'PPPPp');
 }
 
 // render primary current weather info

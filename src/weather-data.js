@@ -51,7 +51,7 @@ function processData(weatherData, type) {
       weatherData.forecast.forecastday[0].astro.sunset,
       formatTemp(weatherData.current.temp_c),
       formatTemp(weatherData.current.temp_f),
-      weatherData.current.last_updated,
+      new Date(),
       weatherData.current.uv,
       weatherData.current.wind_degree,
       weatherData.current.wind_kph,

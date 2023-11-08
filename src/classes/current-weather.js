@@ -32,7 +32,7 @@ export default class CurrentWeather {
     this.sunset = sunset;
     this.tempC = tempC;
     this.tempF = tempF;
-    this.time = time; // format: yyyy-MM-dd hh:mm
+    this.time = time; // new Date() instance
     this.uv = uv;
     this.windDegree = windDegree;
     this.windKph = windKph;
