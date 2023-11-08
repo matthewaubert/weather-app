@@ -1,5 +1,5 @@
 import getWeatherData from './weather-data';
-import renderWeatherData from './render-controller';
+import { renderCurrentWeather, renderForecast } from './render-controller';
 
 // cache DOM
 const form = document.querySelector('form');
@@ -12,13 +12,15 @@ initApp();
 
 // init page to philadelphia weather
 async function initApp() {
-  const currentWeatherData = await getWeatherData('philadelphia', 'current');
-  renderWeatherData(currentWeatherData);
+  const weatherData = await getWeatherData('philadelphia');
+  renderCurrentWeather(weatherData.current);
+  renderForecast(weatherData.forecast);
 }
 
 // prevent form submission and fetch weather
 async function handleSearch(e) {
   e.preventDefault();
-  const weatherData = await getWeatherData(searchInput.value, 'current');
-  renderWeatherData(weatherData);
+  const weatherData = await getWeatherData(searchInput.value);
+  renderCurrentWeather(weatherData.current);
+  renderForecast(weatherData.forecast);
 }

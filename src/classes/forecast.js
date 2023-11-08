@@ -1,4 +1,4 @@
-export default class DailyForecast {
+export default class Forecast {
   constructor(condition, date, maxTempC, maxTempF, minTempC, minTempF) {
     this.condition = condition;
     this.date = date;

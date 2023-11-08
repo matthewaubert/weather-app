@@ -29,6 +29,29 @@ const currentSecondary = {
   moonPhase:
     currentSecondaryDisplay.querySelector('.moon-phase').lastElementChild,
 };
+const forecastDisplay = document.querySelector('.forecast');
+const forecast = [
+  {
+    high: forecastDisplay.querySelector('.day0').children[1],
+    low: forecastDisplay.querySelector('.day0').children[2],
+    icon: forecastDisplay.querySelector('.day0').children[3],
+    condition: forecastDisplay.querySelector('.day0').children[4],
+  },
+  {
+    title: forecastDisplay.querySelector('.day1').children[0],
+    high: forecastDisplay.querySelector('.day1').children[1],
+    low: forecastDisplay.querySelector('.day1').children[2],
+    icon: forecastDisplay.querySelector('.day1').children[3],
+    condition: forecastDisplay.querySelector('.day1').children[4],
+  },
+  {
+    title: forecastDisplay.querySelector('.day2').children[0],
+    high: forecastDisplay.querySelector('.day2').children[1],
+    low: forecastDisplay.querySelector('.day2').children[2],
+    icon: forecastDisplay.querySelector('.day2').children[3],
+    condition: forecastDisplay.querySelector('.day2').children[4],
+  },
+];
 
 const imperial = {
   temp: 'F',
@@ -41,7 +64,7 @@ const imperial = {
 const system = imperial;
 
 // run all render funcs to display weather data
-export default function renderWeatherData(data) {
+function renderCurrentWeather(data) {
   renderLocation(data);
   renderCurrentWeatherPrimary(data);
   renderCurrentWeatherSecondary(data);
@@ -70,7 +93,9 @@ function renderCurrentWeatherPrimary(data) {
 
 // render secondary current weather info
 function renderCurrentWeatherSecondary(data) {
-  currentSecondary.highLow.innerText = `${data[`maxTemp${system.temp}`]}° / ${data[`minTemp${system.temp}`]}°`;
+  currentSecondary.highLow.innerText = `${data[`maxTemp${system.temp}`]}° / ${
+    data[`minTemp${system.temp}`]
+  }°`;
   currentSecondary.chanceRain.innerText = `${data.chanceOfRain}%`;
   currentSecondary.humidity.innerText = `${data.humidity}%`;
   currentSecondary.wind.innerText = `${
@@ -82,3 +107,19 @@ function renderCurrentWeatherSecondary(data) {
   currentSecondary.sunset.innerText = data.sunset;
   currentSecondary.moonPhase.innerText = data.moonPhase;
 }
+
+// render forecast weather info
+function renderForecast(data) {
+  // console.dir(forecast.today.title);
+  // iterate over each day in forecast
+  forecast.forEach(day => {
+    // render title
+    // render high
+    // render low
+    // render icon
+    // render condition
+  });
+
+}
+
+export { renderCurrentWeather, renderForecast };
