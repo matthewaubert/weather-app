@@ -13,10 +13,13 @@
     },
     "rules": {
         "consistent-return": "off",
+        "no-console": "off",
         "no-else-return": ["error", {
             "allowElseIf": true
         }],
-        "no-console": "off",
+        "no-param-reassign": ["error", {
+            "props": false
+        }],
         "no-use-before-define": ["error", {
             "functions": false,
             "classes": false

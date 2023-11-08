@@ -32,27 +32,29 @@ const currentSecondary = {
 const forecastDisplay = document.querySelector('.forecast');
 const forecast = [
   {
-    high: forecastDisplay.querySelector('.day0').children[1],
-    low: forecastDisplay.querySelector('.day0').children[2],
-    icon: forecastDisplay.querySelector('.day0').children[3],
-    condition: forecastDisplay.querySelector('.day0').children[4],
+    title: forecastDisplay.querySelector('.day0').children[0],
+    high: forecastDisplay.querySelector('.day0 .high'),
+    low: forecastDisplay.querySelector('.day0 .low'),
+    icon: forecastDisplay.querySelector('.day0').children[2],
+    condition: forecastDisplay.querySelector('.day0').children[3],
   },
   {
     title: forecastDisplay.querySelector('.day1').children[0],
-    high: forecastDisplay.querySelector('.day1').children[1],
-    low: forecastDisplay.querySelector('.day1').children[2],
-    icon: forecastDisplay.querySelector('.day1').children[3],
-    condition: forecastDisplay.querySelector('.day1').children[4],
+    high: forecastDisplay.querySelector('.day1 .high'),
+    low: forecastDisplay.querySelector('.day1 .low'),
+    icon: forecastDisplay.querySelector('.day1').children[2],
+    condition: forecastDisplay.querySelector('.day1').children[3],
   },
   {
     title: forecastDisplay.querySelector('.day2').children[0],
-    high: forecastDisplay.querySelector('.day2').children[1],
-    low: forecastDisplay.querySelector('.day2').children[2],
-    icon: forecastDisplay.querySelector('.day2').children[3],
-    condition: forecastDisplay.querySelector('.day2').children[4],
+    high: forecastDisplay.querySelector('.day2 .high'),
+    low: forecastDisplay.querySelector('.day2 .low'),
+    icon: forecastDisplay.querySelector('.day2').children[2],
+    condition: forecastDisplay.querySelector('.day2').children[3],
   },
 ];
 
+// measurement systems
 const imperial = {
   temp: 'F',
   speed: 'Mph',
@@ -64,10 +66,11 @@ const imperial = {
 const system = imperial;
 
 // run all render funcs to display weather data
-function renderCurrentWeather(data) {
-  renderLocation(data);
-  renderCurrentWeatherPrimary(data);
-  renderCurrentWeatherSecondary(data);
+export default function renderWeather(data) {
+  renderLocation(data.current);
+  renderCurrentWeatherPrimary(data.current);
+  renderCurrentWeatherSecondary(data.current);
+  renderForecast(data.forecast);
 }
 
 // render location display with weather data
@@ -110,16 +113,16 @@ function renderCurrentWeatherSecondary(data) {
 
 // render forecast weather info
 function renderForecast(data) {
-  // console.dir(forecast.today.title);
+  console.log(data);
   // iterate over each day in forecast
-  forecast.forEach(day => {
+  forecast.forEach((day, i) => {
     // render title
-    // render high
-    // render low
-    // render icon
-    // render condition
+    if (day.title.innerText !== 'Today')
+      day.title.innerText = format(data[i].date, 'cccc');
+    day.high.innerText = `${data[i][`maxTemp${system.temp}`]}°`; // render high
+    day.low.innerText = `/ ${data[i][`minTemp${system.temp}`]}°`; // render low
+    day.icon.src = data[i].condition.icon; // set icon src and alt
+    day.icon.alt = data[i].condition.text;
+    day.condition.innerText = data[i].condition.text; // render condition
   });
-
 }
-
-export { renderCurrentWeather, renderForecast };

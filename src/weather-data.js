@@ -1,3 +1,4 @@
+import { parse } from 'date-fns';
 import CurrentWeather from './classes/current-weather';
 import Forecast from './classes/forecast';
 
@@ -36,7 +37,7 @@ function processData(weatherData) {
     weatherData.current.cloud,
     {
       icon: formatIconLink(weatherData.current.condition.icon),
-      text: weatherData.current.condition.text
+      text: weatherData.current.condition.text,
     },
     // weatherData.current.condition,
     Math.round(weatherData.current.feelslike_c),
@@ -70,12 +71,15 @@ function processData(weatherData) {
     // create new Forecast instance and push to forecasts array
     forecast.push(
       new Forecast(
-        day.day.condition,
-        day.date,
-        day.day.maxtemp_c,
-        day.day.maxtemp_f,
-        day.day.mintemp_c,
-        day.day.mintemp_f
+        {
+          icon: formatIconLink(weatherData.current.condition.icon),
+          text: weatherData.current.condition.text,
+        },
+        parse(day.date, 'yyyy-MM-dd', new Date()),
+        Math.round(day.day.maxtemp_c),
+        Math.round(day.day.maxtemp_f),
+        Math.round(day.day.mintemp_c),
+        Math.round(day.day.mintemp_f)
       )
     );
   });
