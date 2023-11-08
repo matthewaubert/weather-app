@@ -7,13 +7,13 @@ export default class CurrentWeather {
     feelsLikeF,
     humidity,
     isDay,
-    time,
     location,
     moonPhase,
     sunrise,
     sunset,
     tempC,
     tempF,
+    time,
     uv,
     windDegree,
     windKph,
@@ -26,13 +26,16 @@ export default class CurrentWeather {
     this.feelsLikeF = feelsLikeF;
     this.humidity = humidity;
     this.isDay = isDay === 1;
-    this.time = time;
     this.location = location;
+    // abbreviate USA
+    if (this.location.country.includes('United States of America'))
+      this.location.country = 'USA';
     this.moonPhase = moonPhase;
     this.sunrise = sunrise;
     this.sunset = sunset;
     this.tempC = tempC;
     this.tempF = tempF;
+    this.time = time; // format: yyyy-MM-dd hh:mm
     this.uv = uv;
     this.windDegree = windDegree;
     this.windKph = windKph;

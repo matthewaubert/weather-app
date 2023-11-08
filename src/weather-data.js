@@ -2,17 +2,17 @@ import CurrentWeather from './classes/current-weather';
 import DailyForecast from './classes/daily-forecast';
 import HourlyForecast from './classes/hourly-forecast';
 
-// initialize page to philadelphia weather
+// fetch, process, and return weather data; input: location, weather type (e.g. 'current')
 export default async function getWeatherData(location, type) {
   const response = await fetchWeather(location);
   console.log(response);
-  const data = processData(response, type);
-  console.log(data);
+  const weatherData = processData(response, type);
+  console.log(weatherData);
 
-  return data;
+  return weatherData;
 }
 
-// fetch data from weather API; take location as input
+// fetch data from weather API; input: location
 async function fetchWeather(location) {
   const apiKey = 'ab36ae6f835d44c781e191306230411';
 
@@ -26,7 +26,7 @@ async function fetchWeather(location) {
   return weatherData;
 }
 
-// takes in weatherData, returns a CurrentWeather instance
+// return instance of Weather class; input: weather API data, weather type (e.g.'current')
 function processData(weatherData, type) {
   if (type === 'current') {
     return new CurrentWeather(
@@ -37,7 +37,6 @@ function processData(weatherData, type) {
       weatherData.current.feelslike_f,
       weatherData.current.humidity,
       weatherData.current.is_day,
-      weatherData.current.last_updated,
       {
         city: weatherData.location.name,
         country: weatherData.location.country,
@@ -48,6 +47,7 @@ function processData(weatherData, type) {
       weatherData.forecast.forecastday[0].astro.sunset,
       weatherData.current.temp_c,
       weatherData.current.temp_f,
+      weatherData.current.last_updated,
       weatherData.current.uv,
       weatherData.current.wind_degree,
       weatherData.current.wind_kph,

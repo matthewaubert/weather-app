@@ -55,7 +55,7 @@ html, body {
 }
 
 body {
-  background-color: var(--sky-500);
+  background-color: var(--sky-600);
 }
 
 a {
@@ -81,13 +81,30 @@ h2 {
   font-size: 2rem;
 }
 
+h3 {
+  font-size: 1.7rem;
+}
+
+h4 {
+  font-size: 1.4rem;
+  color: var(--sky-300);
+}
+
 
 /* header */
 
+header, main {
+  padding-left: var(--gap-500);
+  padding-right: var(--gap-500);
+}
+
 header {
+  align-items: center;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  gap: var(--gap-200);
+  padding-top: var(--gap-500);
+  padding-bottom: var(--gap-500);
 }
 
 form {
@@ -118,4 +135,9 @@ button > svg {
   fill: white;
   width: 1.25rem;
   height: 1.25rem;
+}
+
+/* location */
+.location {
+  text-align: center;
 }
