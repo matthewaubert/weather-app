@@ -98,6 +98,10 @@ h6 {
   color: var(--sky-300);
 }
 
+h7 {
+  font-size: 1rem;
+}
+
 
 /* header */
 
@@ -194,4 +198,38 @@ main {
   grid-template-columns: 1fr 1fr 1fr;
   grid-template-rows: 1fr 1fr 1fr;
   gap: var(--gap-200);
+}
+
+
+/* forecast */
+
+.forecast {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: auto auto;
+  gap: var(--gap-200);
+}
+
+.forecast > .header {
+  grid-column: 1 / -1;
+}
+
+.forecast > div {
+  display: flex;
+  flex-direction: column;
+}
+
+.forecast .high {
+  font-size: 1.4rem;
+  font-weight: bold;
+}
+
+.forecast .low {
+  font-size: 1rem;
+  font-weight: bold;
+}
+
+.forecast img {
+  width: 4rem;
+  height: 4rem;
 }
