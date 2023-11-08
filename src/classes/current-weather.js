@@ -27,9 +27,6 @@ export default class CurrentWeather {
     this.humidity = humidity;
     this.isDay = isDay === 1;
     this.location = location;
-    // abbreviate USA
-    if (this.location.country.includes('United States of America'))
-      this.location.country = 'USA';
     this.moonPhase = moonPhase;
     this.sunrise = sunrise;
     this.sunset = sunset;

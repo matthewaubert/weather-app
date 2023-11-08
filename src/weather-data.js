@@ -32,21 +32,25 @@ function processData(weatherData, type) {
     return new CurrentWeather(
       weatherData.forecast.forecastday[0].day.daily_chance_of_rain,
       weatherData.current.cloud,
-      weatherData.current.condition,
-      weatherData.current.feelslike_c,
-      weatherData.current.feelslike_f,
+      {
+        icon: formatIconLink(weatherData.current.condition.icon),
+        text: weatherData.current.condition.text
+      },
+      // weatherData.current.condition,
+      formatTemp(weatherData.current.feelslike_c),
+      formatTemp(weatherData.current.feelslike_f),
       weatherData.current.humidity,
       weatherData.current.is_day,
       {
         city: weatherData.location.name,
-        country: weatherData.location.country,
+        country: formatCountry(weatherData.location.country),
         region: weatherData.location.region,
       },
       weatherData.forecast.forecastday[0].astro.moon_phase,
       weatherData.forecast.forecastday[0].astro.sunrise,
       weatherData.forecast.forecastday[0].astro.sunset,
-      weatherData.current.temp_c,
-      weatherData.current.temp_f,
+      formatTemp(weatherData.current.temp_c),
+      formatTemp(weatherData.current.temp_f),
       weatherData.current.last_updated,
       weatherData.current.uv,
       weatherData.current.wind_degree,
@@ -83,4 +87,21 @@ function processData(weatherData, type) {
 
     return forecasts;
   }
+}
+
+// reformat weatherApi icon link to work with locally hosted icons
+function formatIconLink(iconLink) {
+  const splitLink = iconLink.split('/');
+  return `./icons/${splitLink[5]}/${splitLink[6]}`;
+}
+
+// abbreviate USA
+function formatCountry(country) {
+  if (country.includes('United States of America')) return 'USA';
+  return country;
+}
+
+// round temperature to nearest integer
+function formatTemp(temp) {
+  return Math.round(temp);
 }

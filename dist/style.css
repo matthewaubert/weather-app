@@ -87,6 +87,10 @@ h3 {
 
 h4 {
   font-size: 1.4rem;
+}
+
+h5 {
+  font-size: 1.2rem;
   color: var(--sky-300);
 }
 
@@ -137,7 +141,33 @@ button > svg {
   height: 1.25rem;
 }
 
+
 /* location */
+
 .location {
   text-align: center;
+}
+
+
+/* current weather primary */
+
+.current-primary {
+  display: grid;
+  /* gap: var(--gap-200); */
+  grid-template-columns: 1fr 1fr;
+  place-items: center;
+}
+
+.current-primary .condition-icon {
+  width: 8rem;
+  height: 8rem;
+}
+
+.current-primary .current-temp {
+  font-size: 5rem;
+  font-weight: bold;
+}
+
+.current-primary .current-feelslike {
+  color: var(--sky-300);
 }
