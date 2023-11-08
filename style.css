@@ -91,6 +91,10 @@ h4 {
 
 h5 {
   font-size: 1.2rem;
+}
+
+h6 {
+  font-size: 1rem;
   color: var(--sky-300);
 }
 
@@ -144,8 +148,18 @@ button > svg {
 
 /* location */
 
+main {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap-400);
+}
+
 .location {
   text-align: center;
+}
+
+.time {
+  color: var(--sky-300);
 }
 
 
@@ -172,4 +186,12 @@ button > svg {
   color: var(--sky-300);
 }
 
+
 /* current weather secondary */
+
+.current-secondary {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr;
+  gap: var(--gap-200);
+}
