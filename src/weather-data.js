@@ -37,8 +37,8 @@ function processData(weatherData, type) {
         text: weatherData.current.condition.text
       },
       // weatherData.current.condition,
-      formatTemp(weatherData.current.feelslike_c),
-      formatTemp(weatherData.current.feelslike_f),
+      Math.round(weatherData.current.feelslike_c),
+      Math.round(weatherData.current.feelslike_f),
       weatherData.current.humidity,
       weatherData.current.is_day,
       {
@@ -46,11 +46,15 @@ function processData(weatherData, type) {
         country: formatCountry(weatherData.location.country),
         region: weatherData.location.region,
       },
+      Math.round(weatherData.forecast.forecastday[0].day.maxtemp_c),
+      Math.round(weatherData.forecast.forecastday[0].day.maxtemp_f),
+      Math.round(weatherData.forecast.forecastday[0].day.mintemp_c),
+      Math.round(weatherData.forecast.forecastday[0].day.mintemp_f),
       weatherData.forecast.forecastday[0].astro.moon_phase,
       weatherData.forecast.forecastday[0].astro.sunrise,
       weatherData.forecast.forecastday[0].astro.sunset,
-      formatTemp(weatherData.current.temp_c),
-      formatTemp(weatherData.current.temp_f),
+      Math.round(weatherData.current.temp_c),
+      Math.round(weatherData.current.temp_f),
       new Date(),
       weatherData.current.uv,
       weatherData.current.wind_degree,
@@ -99,9 +103,4 @@ function formatIconLink(iconLink) {
 function formatCountry(country) {
   if (country.includes('United States of America')) return 'USA';
   return country;
-}
-
-// round temperature to nearest integer
-function formatTemp(temp) {
-  return Math.round(temp);
 }

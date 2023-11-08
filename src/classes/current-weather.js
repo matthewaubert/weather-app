@@ -8,6 +8,10 @@ export default class CurrentWeather {
     humidity,
     isDay,
     location,
+    maxTempC,
+    maxTempF,
+    minTempC,
+    minTempF,
     moonPhase,
     sunrise,
     sunset,
@@ -27,6 +31,10 @@ export default class CurrentWeather {
     this.humidity = humidity;
     this.isDay = isDay === 1;
     this.location = location;
+    this.maxTempC = maxTempC;
+    this.maxTempF = maxTempF;
+    this.minTempC = minTempC;
+    this.minTempF = minTempF;
     this.moonPhase = moonPhase;
     this.sunrise = sunrise;
     this.sunset = sunset;
