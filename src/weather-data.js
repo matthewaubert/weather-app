@@ -58,8 +58,8 @@ function processData(weatherData, type) {
       new Date(),
       weatherData.current.uv,
       weatherData.current.wind_degree,
-      weatherData.current.wind_kph,
-      weatherData.current.wind_mph
+      Math.round(weatherData.current.wind_kph),
+      Math.round(weatherData.current.wind_mph)
     );
   } else if (type === 'daily') {
     const forecasts = [];
