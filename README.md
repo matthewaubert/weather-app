@@ -45,12 +45,6 @@ The look of the page should change based on the data - perhaps by changing the b
      - maxTempF
      - minTempC
      - minTempF
-   - hourly forecast data:
-     - condition
-     - time
-     - tempC
-     - tempF
-     - time
 
 1. Set up a simple form that enables the user to input their location. The app should then fetch the weather info based on the input location (still simply console.log() the info).
 

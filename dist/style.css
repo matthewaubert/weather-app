@@ -183,34 +183,39 @@ main {
 
 /* current weather primary */
 
-.current-primary {
+.current {
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-template-rows: auto auto;
   place-items: center;
 }
 
-.current-primary .condition-icon {
+.current .condition-icon {
   font-size: 5rem;
 }
 
-.current-primary .current-temp {
+.current .current-temp {
   font-size: 5rem;
   font-weight: bold;
 }
 
-.current-primary .current-feelslike {
+.current .current-feelslike {
   color: var(--sky-300);
 }
 
 
 /* current weather secondary */
 
-.current-secondary {
+.today {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
-  grid-template-rows: 1fr 1fr 1fr;
+  grid-template-rows: auto 1fr 1fr 1fr;
   gap: var(--gap-200);
+}
+
+.today > .header,
+.forecast > .header {
+  grid-column: 1 / -1;
 }
 
 .moon-phase .wi {
@@ -225,10 +230,6 @@ main {
   grid-template-columns: 1fr 1fr 1fr;
   grid-template-rows: auto auto;
   gap: var(--gap-200);
-}
-
-.forecast > .header {
-  grid-column: 1 / -1;
 }
 
 .forecast > div {

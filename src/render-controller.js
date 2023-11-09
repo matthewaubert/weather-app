@@ -9,14 +9,14 @@ const location = {
   country: locationDisplay.querySelector('.country'),
   time: locationDisplay.querySelector('.time'),
 };
-const currentPrimaryDisplay = document.querySelector('.current-primary');
+const currentPrimaryDisplay = document.querySelector('.current');
 const currentPrimary = {
   icon: currentPrimaryDisplay.querySelector('.condition-icon'),
   text: currentPrimaryDisplay.querySelector('.condition-text'),
   temp: currentPrimaryDisplay.querySelector('.current-temp'),
   feelsLike: currentPrimaryDisplay.querySelector('.current-feelslike'),
 };
-const currentSecondaryDisplay = document.querySelector('.current-secondary');
+const currentSecondaryDisplay = document.querySelector('.today');
 const currentSecondary = {
   highLow: currentSecondaryDisplay.querySelector('.high-low').lastElementChild,
   chanceRain:
