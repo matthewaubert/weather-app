@@ -79,16 +79,11 @@ function switchSystem() {
 
 // run all render funcs to display weather data
 export default function renderWeather(data) {
-  cacheWeatherData(data);
+  weatherDataCache = data; // cache weather data for later use
   renderLocation(data.current);
   renderCurrentWeatherPrimary(data.current);
   renderCurrentWeatherSecondary(data.current);
   renderForecast(data.forecast);
-}
-
-// cache weather data for later use
-function cacheWeatherData(data) {
-  weatherDataCache = data;
 }
 
 // render location display with weather data
@@ -130,7 +125,6 @@ function renderCurrentWeatherSecondary(data) {
 
 // render forecast weather info
 function renderForecast(data) {
-  console.log(data);
   // iterate over each day in forecast
   forecast.forEach((day, i) => {
     // render title
