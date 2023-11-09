@@ -1,6 +1,19 @@
 /* Roboto */
 @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap');
 
+/* Weather Icons */
+@font-face {
+  font-family: "Weather Icons";
+  src: url("fonts/weathericons/weathericons-regular-webfont.eot");
+  src: url("fonts/weathericons/weathericons-regular-webfont.eot") format("embedded-opentype"),
+       url("fonts/weathericons/weathericons-regular-webfont.woff2") format("woff2"),
+       url("fonts/weathericons/weathericons-regular-webfont.woff") format("woff"),
+       url("fonts/weathericons/weathericons-regular-webfont.ttf") format("ttf");
+  font-weight: normal;
+  font-style: normal;
+}
+
+
 /* general */
 
 :root {
@@ -98,8 +111,9 @@ h6 {
   color: var(--sky-300);
 }
 
-h7 {
-  font-size: 1rem;
+.wi {
+  font-family: "Weather Icons", sans-serif;
+  color: white;
 }
 
 
@@ -177,8 +191,7 @@ main {
 }
 
 .current-primary .condition-icon {
-  width: 8rem;
-  height: 8rem;
+  font-size: 5rem;
 }
 
 .current-primary .current-temp {
@@ -198,6 +211,10 @@ main {
   grid-template-columns: 1fr 1fr 1fr;
   grid-template-rows: 1fr 1fr 1fr;
   gap: var(--gap-200);
+}
+
+.moon-phase .wi {
+  font-size: 2rem;
 }
 
 
@@ -229,7 +246,6 @@ main {
   font-weight: bold;
 }
 
-.forecast img {
-  width: 4rem;
-  height: 4rem;
+.forecast .wi {
+  font-size: 3rem;
 }

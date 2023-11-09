@@ -36,7 +36,7 @@ function processData(weatherData) {
     weatherData.forecast.forecastday[0].day.daily_chance_of_rain,
     weatherData.current.cloud,
     {
-      icon: formatIconLink(weatherData.current.condition.icon),
+      code: weatherData.current.condition.code,
       text: weatherData.current.condition.text,
     },
     // weatherData.current.condition,
@@ -72,7 +72,7 @@ function processData(weatherData) {
     forecast.push(
       new Forecast(
         {
-          icon: formatIconLink(weatherData.current.condition.icon),
+          code: weatherData.current.condition.code,
           text: weatherData.current.condition.text,
         },
         parse(day.date, 'yyyy-MM-dd', new Date()),
@@ -88,10 +88,10 @@ function processData(weatherData) {
 }
 
 // reformat weatherApi icon link to work with locally hosted icons
-function formatIconLink(iconLink) {
-  const splitLink = iconLink.split('/');
-  return `./icons/${splitLink[5]}/${splitLink[6]}`;
-}
+// function formatIconLink(iconLink) {
+//   const splitLink = iconLink.split('/');
+//   return `./icons/${splitLink[5]}/${splitLink[6]}`;
+// }
 
 // abbreviate USA
 function formatCountry(country) {

@@ -1,4 +1,5 @@
 import { format } from 'date-fns';
+import wiMap from './wi-map';
 
 // cache DOM
 const locationDisplay = document.querySelector('.location');
@@ -83,8 +84,9 @@ function renderLocation(data) {
 
 // render primary current weather info
 function renderCurrentWeatherPrimary(data) {
-  currentPrimary.icon.src = data.condition.icon; // set icon src and alt
-  currentPrimary.icon.alt = data.condition.text;
+  currentPrimary.icon.innerText = data.isDay
+    ? wiMap.day[data.condition.code]
+    : wiMap.night[data.condition.code]; // render icon
   currentPrimary.text.innerText = data.condition.text; // render condition text
   currentPrimary.temp.innerText = `${data[`temp${system.temp}`]}°${
     system.temp
@@ -108,7 +110,7 @@ function renderCurrentWeatherSecondary(data) {
   currentSecondary.uv.innerText = data.uv;
   currentSecondary.sunrise.innerText = data.sunrise;
   currentSecondary.sunset.innerText = data.sunset;
-  currentSecondary.moonPhase.innerText = data.moonPhase;
+  currentSecondary.moonPhase.innerText = wiMap.moonPhase[data.moonPhase];
 }
 
 // render forecast weather info
@@ -121,8 +123,7 @@ function renderForecast(data) {
       day.title.innerText = format(data[i].date, 'cccc');
     day.high.innerText = `${data[i][`maxTemp${system.temp}`]}°`; // render high
     day.low.innerText = `/ ${data[i][`minTemp${system.temp}`]}°`; // render low
-    day.icon.src = data[i].condition.icon; // set icon src and alt
-    day.icon.alt = data[i].condition.text;
+    day.icon.innerText = wiMap.day[data[i].condition.code]; // render icon
     day.condition.innerText = data[i].condition.text; // render condition
   });
 }

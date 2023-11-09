@@ -63,3 +63,5 @@ The look of the page should change based on the data - perhaps by changing the b
 ### Credits
 
 Powered by <a href="https://www.weatherapi.com/" title="Free Weather API">WeatherAPI.com</a>
+
+Icons by <a href="https://erikflowers.github.io/weather-icons/" title="Weather Icons">Erik Flowers</a>
