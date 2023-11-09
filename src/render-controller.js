@@ -2,6 +2,7 @@ import { format } from 'date-fns';
 import wiMap from './wi-map';
 
 // cache DOM
+const systemToggle = document.querySelector('#system-toggle');
 const locationDisplay = document.querySelector('.location');
 const location = {
   city: locationDisplay.querySelector('.city'),
@@ -53,23 +54,41 @@ const forecast = [
   },
 ];
 
+// add event listeners
+systemToggle.addEventListener('change', switchSystem);
+
+// variable to hold weather data cache
+let weatherDataCache;
+
 // measurement systems
 const imperial = {
   temp: 'F',
   speed: 'Mph',
 };
-// const metric = {
-//   temp: 'C',
-//   speed: 'Kph',
-// };
-const system = imperial;
+const metric = {
+  temp: 'C',
+  speed: 'Kph',
+};
+let system = imperial;
+
+// switch system between imperial and metric
+function switchSystem() {
+  system = system === imperial ? metric : imperial;
+  renderWeather(weatherDataCache);
+}
 
 // run all render funcs to display weather data
 export default function renderWeather(data) {
+  cacheWeatherData(data);
   renderLocation(data.current);
   renderCurrentWeatherPrimary(data.current);
   renderCurrentWeatherSecondary(data.current);
   renderForecast(data.forecast);
+}
+
+// cache weather data for later use
+function cacheWeatherData(data) {
+  weatherDataCache = data;
 }
 
 // render location display with weather data
