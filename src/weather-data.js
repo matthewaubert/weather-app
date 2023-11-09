@@ -72,8 +72,8 @@ function processData(weatherData) {
     forecast.push(
       new Forecast(
         {
-          code: weatherData.current.condition.code,
-          text: weatherData.current.condition.text,
+          code: day.day.condition.code,
+          text: day.day.condition.text,
         },
         parse(day.date, 'yyyy-MM-dd', new Date()),
         Math.round(day.day.maxtemp_c),

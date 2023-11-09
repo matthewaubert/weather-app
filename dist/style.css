@@ -176,7 +176,7 @@ button > svg {
 }
 
 
-/* slider */
+/* unit toggle switch */
 
 .switch {
   flex: 0 0 auto;
@@ -207,7 +207,10 @@ button > svg {
 .slider:before {
   border-radius: 50%;
   position: absolute;
-  content: "";
+  font-family: "Weather Icons";
+  font-size: 0.9rem;
+  color: var(--gray-500);
+  content: "\f055";
   height: 1.8rem;
   width: 1.8rem;
   left: 4px;
@@ -215,6 +218,9 @@ button > svg {
   background-color: white;
   -webkit-transition: var(--transition-slow);
   transition: var(--transition-slow);
+  display: grid;
+  place-content: center;
+  z-index: 1;
 }
 
 input + .slider {
@@ -227,31 +233,31 @@ input:checked + .slider:before {
   transform: translateX(2.3rem);
 }
 
-/* .deg-c {
+/* .metric {
   display: none;
 } */
 
-.deg-f, .deg-c {
+.imperial, .metric {
   color: white;
   position: absolute;
   font-size: 1.2rem;
 }
 
-.deg-f {
+.imperial {
   place-self: center end;
   padding-right: 15px;
 }
 
-.deg-c {
+.metric {
   place-self: center start;
   padding-left: 12px;
 }
 
-/* input:checked + .slider .deg-c {
+/* input:checked + .slider .metric {
   display: block;
 }
 
-input:checked + .slider .deg-f {
+input:checked + .slider .imperial {
   display: none;
 } */
 

@@ -9,26 +9,24 @@ const location = {
   country: locationDisplay.querySelector('.country'),
   time: locationDisplay.querySelector('.time'),
 };
-const currentPrimaryDisplay = document.querySelector('.current');
-const currentPrimary = {
-  icon: currentPrimaryDisplay.querySelector('.condition-icon'),
-  text: currentPrimaryDisplay.querySelector('.condition-text'),
-  temp: currentPrimaryDisplay.querySelector('.current-temp'),
-  feelsLike: currentPrimaryDisplay.querySelector('.current-feelslike'),
+const currentDisplay = document.querySelector('.current');
+const current = {
+  icon: currentDisplay.querySelector('.condition-icon'),
+  text: currentDisplay.querySelector('.condition-text'),
+  temp: currentDisplay.querySelector('.current-temp'),
+  feelsLike: currentDisplay.querySelector('.current-feelslike'),
 };
-const currentSecondaryDisplay = document.querySelector('.today');
-const currentSecondary = {
-  highLow: currentSecondaryDisplay.querySelector('.high-low').lastElementChild,
-  chanceRain:
-    currentSecondaryDisplay.querySelector('.chance-rain').lastElementChild,
-  humidity: currentSecondaryDisplay.querySelector('.humidity').lastElementChild,
-  wind: currentSecondaryDisplay.querySelector('.wind').lastElementChild,
-  cloud: currentSecondaryDisplay.querySelector('.cloud').lastElementChild,
-  uv: currentSecondaryDisplay.querySelector('.uv-index').lastElementChild,
-  sunrise: currentSecondaryDisplay.querySelector('.sunrise').lastElementChild,
-  sunset: currentSecondaryDisplay.querySelector('.sunset').lastElementChild,
-  moonPhase:
-    currentSecondaryDisplay.querySelector('.moon-phase').lastElementChild,
+const todayDisplay = document.querySelector('.today');
+const today = {
+  highLow: todayDisplay.querySelector('.high-low').lastElementChild,
+  chanceRain: todayDisplay.querySelector('.chance-rain').lastElementChild,
+  humidity: todayDisplay.querySelector('.humidity').lastElementChild,
+  wind: todayDisplay.querySelector('.wind').lastElementChild,
+  cloud: todayDisplay.querySelector('.cloud').lastElementChild,
+  uv: todayDisplay.querySelector('.uv-index').lastElementChild,
+  sunrise: todayDisplay.querySelector('.sunrise').lastElementChild,
+  sunset: todayDisplay.querySelector('.sunset').lastElementChild,
+  moonPhase: todayDisplay.querySelector('.moon-phase').lastElementChild,
 };
 const forecastDisplay = document.querySelector('.forecast');
 const forecast = [
@@ -84,33 +82,31 @@ function renderLocation(data) {
 
 // render primary current weather info
 function renderCurrentWeatherPrimary(data) {
-  currentPrimary.icon.innerText = data.isDay
+  current.icon.innerText = data.isDay
     ? wiMap.day[data.condition.code]
     : wiMap.night[data.condition.code]; // render icon
-  currentPrimary.text.innerText = data.condition.text; // render condition text
-  currentPrimary.temp.innerText = `${data[`temp${system.temp}`]}°${
-    system.temp
-  }`; // render current temp
-  currentPrimary.feelsLike.innerText = `Feels like ${
+  current.text.innerText = data.condition.text; // render condition text
+  current.temp.innerText = `${data[`temp${system.temp}`]}°${system.temp}`; // render current temp
+  current.feelsLike.innerText = `Feels like ${
     data[`feelsLike${system.temp}`]
   }°${system.temp}`; // render current feelslike
 }
 
 // render secondary current weather info
 function renderCurrentWeatherSecondary(data) {
-  currentSecondary.highLow.innerText = `${data[`maxTemp${system.temp}`]}° / ${
+  today.highLow.innerText = `${data[`maxTemp${system.temp}`]}° / ${
     data[`minTemp${system.temp}`]
   }°`;
-  currentSecondary.chanceRain.innerText = `${data.chanceOfRain}%`;
-  currentSecondary.humidity.innerText = `${data.humidity}%`;
-  currentSecondary.wind.innerText = `${
+  today.chanceRain.innerText = `${data.chanceOfRain}%`;
+  today.humidity.innerText = `${data.humidity}%`;
+  today.wind.innerText = `${
     data[`wind${system.speed}`]
   } ${system.speed.toLowerCase()}`;
-  currentSecondary.cloud.innerText = `${data.cloud}%`;
-  currentSecondary.uv.innerText = data.uv;
-  currentSecondary.sunrise.innerText = data.sunrise;
-  currentSecondary.sunset.innerText = data.sunset;
-  currentSecondary.moonPhase.innerText = wiMap.moonPhase[data.moonPhase];
+  today.cloud.innerText = `${data.cloud}%`;
+  today.uv.innerText = data.uv;
+  today.sunrise.innerText = data.sunrise;
+  today.sunset.innerText = data.sunset;
+  today.moonPhase.innerText = wiMap.moonPhase[data.moonPhase];
 }
 
 // render forecast weather info
