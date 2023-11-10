@@ -15,6 +15,7 @@
 /* general */
 
 :root {
+  /* cloudy, foggy, etc. */
   --gray-050: #f8fafc;
   --gray-100: #f1f5f9;
   --gray-200: #e5e7eb;
@@ -23,16 +24,33 @@
   --gray-500: #6b7280;
   --gray-600: #4b5563;
   --gray-700: #374151;
-  --gray-800: #1F2937;
-  --sky-200: #BAE6FD;
-  --sky-300: #7DD3FC;
+  --gray-800: #1f2937;
+  --gray-900: #111827;
+  /* day */
+  --sky-200: #bae6fd;
+  --sky-300: #7dd3fc;
   --sky-400: #38bdf8;
-  --sky-500: #0EA5E9;
+  --sky-500: #0ea5e9;
   --sky-600: #0284c7;
   --sky-700: #0369a1;
   --sky-800: #075985;
   --sky-900: #0c4a6e;
   --sky-950: #082f49;
+  /* night */
+  --blue-400: #60a5fa;
+  --blue-700: #1d4ed8;
+  --blue-800: #1e40af;
+  --blue-900: #1e3a8a;
+  --blue-950: #172554;
+  --blue-975: #0e1734;
+  /* inclement weather */
+  --purple-400: #c084fc;
+  --purple-700: #7e22ce;
+  --purple-900: #581c87;
+  --purple-950: #3b0764;
+  --bg-gradient: var(--sky-600), var(--sky-900);
+  --search-bar: var(--sky-800);
+  --text-light: var(--sky-300);
   --gap-025: 0.1rem;
   --gap-050: 0.2rem;
   --gap-100: 0.4rem;
@@ -68,7 +86,7 @@ html, body {
 }
 
 body {
-  background-color: var(--sky-600);
+  background: linear-gradient(var(--bg-gradient));
 }
 
 a {
@@ -88,7 +106,6 @@ button:hover {
 }
 
 h1 {
-  /* font-size: 2.4rem; */
   font-size: min(calc(1.45rem + 3.5vw), 2.72rem);
 }
 
@@ -97,27 +114,23 @@ h2 {
 }
 
 h3 {
-  /* font-size: 1.65rem; */
   font-size: min(calc(0.9rem + 3vw), 2rem);
 }
 
 h4 {
-  /* font-size: 1.4rem; */
   font-size: min(calc(0.6rem + 2.8vw), 1.65rem);
 }
 
 h5, .high {
-  /* font-size: 1.2rem; */
   font-size: min(calc(0.55rem + 2.7vw), 1.4rem);
 }
 
 h6, .low, p {
-  /* font-size: 1rem; */
   font-size: min(calc(0.43rem + 2.3vw), 1.1rem);
 }
 
 h6 {
-  color: var(--sky-300);
+  color: var(--text-light);
 }
 
 header, main {
@@ -145,10 +158,6 @@ header {
   padding-bottom: var(--gap-400);
 }
 
-.logo {
-  font-size: 2rem;
-}
-
 header > div {
   display: flex;
   gap: var(--gap-200);
@@ -164,7 +173,7 @@ form {
 
 #search-input {
   flex: 1 1 auto;
-  background-color: var(--sky-800);
+  background-color: var(--search-bar);
   border-radius: 24px;
   box-shadow: inset var(--shadow-2);
   color: white;
@@ -216,7 +225,7 @@ button > svg {
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: var(--sky-800);
+  background-color: var(--search-bar);
   -webkit-transition: var(--transition-slow);
   transition: var(--transition-slow);
   display: grid;
@@ -280,7 +289,7 @@ main {
 }
 
 .time {
-  color: var(--sky-300);
+  color: var(--text-light);
   margin-top: var(--gap-050);
 }
 
@@ -291,10 +300,9 @@ main {
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-template-rows: auto auto;
-  gap: var(--gap-025);
   justify-content: space-around;
   place-items: center;
-  margin-top: -0.8rem;
+  margin-top: -0.7rem;
 }
 
 .condition-icon {
@@ -313,7 +321,7 @@ main {
 
 .current-feelslike {
   align-self: baseline;
-  color: var(--sky-300);
+  color: var(--text-light);
 }
 
 
