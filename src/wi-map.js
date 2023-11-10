@@ -45,7 +45,7 @@ const wiMap = {
     1261: '\uf0b2', // Light showers of ice pellets
     1264: '\uf0b2', // Moderate or heavy showers of ice pellets
     1273: '\uf00e', // Patchy light rain with thunder
-    1276: '\uf010', // Moderate or heavy rain with thunder
+    1276: '\uf01e', // Moderate or heavy rain with thunder
     1279: '\uf06b', // Patchy light snow with thunder
     1282: '\uf06b', // Moderate or heavy snow with thunder
   },
@@ -95,7 +95,7 @@ const wiMap = {
     1261: '\uf0b4', // Light showers of ice pellets
     1264: '\uf0b4', // Moderate or heavy showers of ice pellets
     1273: '\uf02c', // Patchy light rain with thunder
-    1276: '\uf02d', // Moderate or heavy rain with thunder
+    1276: '\uf01e', // Moderate or heavy rain with thunder
     1279: '\uf06d', // Patchy light snow with thunder
     1282: '\uf06d', // Moderate or heavy snow with thunder
   },

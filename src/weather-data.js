@@ -58,7 +58,7 @@ function processData(weatherData) {
     weatherData.forecast.forecastday[0].astro.sunset,
     Math.round(weatherData.current.temp_c),
     Math.round(weatherData.current.temp_f),
-    new Date(),
+    new Date(), // NEED TO MAKE THIS ADJUST FOR TIME ZONE
     weatherData.current.uv,
     weatherData.current.wind_degree,
     Math.round(weatherData.current.wind_kph),

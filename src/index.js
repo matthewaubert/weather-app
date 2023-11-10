@@ -12,7 +12,7 @@ initApp();
 
 // init page to philadelphia weather
 async function initApp() {
-  const weatherData = await getWeatherData('philadelphia');
+  const weatherData = await getWeatherData('huaraz');
   renderWeather(weatherData);
 }
 

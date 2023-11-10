@@ -20,7 +20,7 @@ const current = {
 const todayDisplay = document.querySelector('.today');
 const today = {
   highLow: todayDisplay.querySelector('.high-low').lastElementChild,
-  chanceRain: todayDisplay.querySelector('.chance-rain').lastElementChild,
+  precip: todayDisplay.querySelector('.precip').lastElementChild,
   humidity: todayDisplay.querySelector('.humidity').lastElementChild,
   wind: todayDisplay.querySelector('.wind').lastElementChild,
   cloud: todayDisplay.querySelector('.cloud').lastElementChild,
@@ -111,7 +111,7 @@ function renderCurrentWeatherSecondary(data) {
   today.highLow.innerText = `${data[`maxTemp${system.temp}`]}° / ${
     data[`minTemp${system.temp}`]
   }°`;
-  today.chanceRain.innerText = `${data.chanceOfRain}%`;
+  today.precip.innerText = `${data.chanceOfRain}%`;
   today.humidity.innerText = `${data.humidity}%`;
   today.wind.innerText = `${
     data[`wind${system.speed}`]
