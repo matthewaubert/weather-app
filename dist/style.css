@@ -33,6 +33,7 @@
   --sky-800: #075985;
   --sky-900: #0c4a6e;
   --sky-950: #082f49;
+  --gap-025: 0.1rem;
   --gap-050: 0.2rem;
   --gap-100: 0.4rem;
   --gap-150: 0.6rem;
@@ -50,8 +51,9 @@
   --font-sm: 0.9rem;
   --font-md: 1.1rem;
   --font-lg: 1.3rem;
-  font-family: var(--font-stack);
   color: white;
+  font-family: var(--font-stack);
+  line-height: 1.25;
 }
 
 * {
@@ -120,8 +122,9 @@ header, main {
 }
 
 .wi {
-  font-family: "Weather Icons", sans-serif;
   color: white;
+  font-family: "Weather Icons", sans-serif;
+  line-height: 1.5;
 }
 
 
@@ -131,9 +134,9 @@ header {
   display: flex;
   align-items: center;
   flex-direction: column;
-  gap: var(--gap-100);
-  padding-top: var(--gap-300);
-  padding-bottom: var(--gap-500);
+  gap: var(--gap-150);
+  padding-top: var(--gap-400);
+  padding-bottom: var(--gap-400);
 }
 
 header > div {
@@ -259,12 +262,13 @@ main {
   gap: var(--gap-400);
 }
 
-/* .location {
-  text-align: center;
-} */
+.reg-country {
+  margin-top: -0.1rem;
+}
 
 .time {
   color: var(--sky-300);
+  margin-top: var(--gap-050);
 }
 
 
@@ -274,19 +278,26 @@ main {
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-template-rows: auto auto;
+  gap: var(--gap-050) var(--gap-100);
   place-items: center;
 }
 
-.current .condition-icon {
+.condition-icon {
   font-size: 5rem;
 }
 
-.current .current-temp {
-  font-size: 5rem;
+.current-temp {
+  font-size: min(calc(3.4rem + 2.4vw), 5rem);
   font-weight: bold;
 }
 
-.current .current-feelslike {
+.condition-text,
+.current-feelslike {
+  font-size: min(calc(0.35rem + 3.5vw), 1.4rem);
+  text-align: center;
+}
+
+.current-feelslike {
   color: var(--sky-300);
 }
 
