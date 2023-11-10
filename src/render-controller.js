@@ -122,7 +122,7 @@ function renderCurrentWeatherSecondary(data) {
     data[`wind${system.speed}`]
   } ${system.speed.toLowerCase()}`;
   today.cloud.innerText = `${data.cloud}%`;
-  today.uv.innerText = data.uv;
+  today.uv.innerText = `${data.uv} of 11`;
   today.sunrise.innerText = data.sunrise;
   today.sunset.innerText = data.sunset;
   today.moonPhase.innerText = wiMap.moonPhase[data.moonPhase];
