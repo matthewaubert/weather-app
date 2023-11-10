@@ -50,9 +50,7 @@
   --transition-fast: all .1s ease-in-out;
   --transition-slow: all .4s ease-in-out;
   --font-stack: 'Nunito', 'Helvetica', 'Arial', sans-serif;
-  --font-sm: 0.9rem;
-  --font-md: 1.1rem;
-  --font-lg: 1.3rem;
+  --moon: min(calc(1.2rem + 2.3vw), 2.4rem);
   color: white;
   font-family: var(--font-stack);
   line-height: 1.25;
@@ -90,7 +88,8 @@ button:hover {
 }
 
 h1 {
-  font-size: 2.4rem;
+  /* font-size: 2.4rem; */
+  font-size: min(calc(1.45rem + 3.5vw), 2.72rem);
 }
 
 h2 {
@@ -98,27 +97,32 @@ h2 {
 }
 
 h3 {
-  font-size: 1.7rem;
+  /* font-size: 1.65rem; */
+  font-size: min(calc(0.9rem + 3vw), 2rem);
 }
 
 h4 {
-  font-size: 1.4rem;
+  /* font-size: 1.4rem; */
+  font-size: min(calc(0.6rem + 2.8vw), 1.65rem);
 }
 
-h5 {
-  font-size: 1.2rem;
+h5, .high {
+  /* font-size: 1.2rem; */
+  font-size: min(calc(0.55rem + 2.7vw), 1.4rem);
+}
+
+h6, .low, p {
+  /* font-size: 1rem; */
+  font-size: min(calc(0.43rem + 2.3vw), 1.1rem);
 }
 
 h6 {
-  font-size: 1rem;
   color: var(--sky-300);
 }
 
-p {
-  font-size: 1rem;
-}
-
 header, main {
+  margin: auto;
+  max-width: 800px;
   padding-left: var(--gap-600);
   padding-right: var(--gap-600);
 }
@@ -136,9 +140,13 @@ header {
   display: flex;
   align-items: center;
   flex-direction: column;
-  gap: var(--gap-150);
+  gap: var(--gap-150) var(--gap-800);
   padding-top: var(--gap-400);
   padding-bottom: var(--gap-400);
+}
+
+.logo {
+  font-size: 2rem;
 }
 
 header > div {
@@ -283,23 +291,23 @@ main {
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-template-rows: auto auto;
-  gap: var(--gap-050) var(--gap-100);
+  gap: var(--gap-025);
+  justify-content: space-around;
   place-items: center;
   margin-top: -0.8rem;
 }
 
 .condition-icon {
-  font-size: 5rem;
+  font-size: min(calc(3.8rem + 4.25vw), 6rem);
 }
 
 .current-temp {
-  font-size: min(calc(3.4rem + 2.4vw), 5rem);
+  font-size: min(calc(3.3rem + 4vw), 5.3rem);
   font-weight: bold;
 }
 
 .condition-text,
 .current-feelslike {
-  font-size: min(calc(0.35rem + 3.5vw), 1.4rem);
   text-align: center;
 }
 
@@ -315,7 +323,7 @@ main {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   grid-template-rows: auto 1fr 1fr 1fr;
-  gap: var(--gap-200);
+  gap: var(--gap-250);
 }
 
 .today > .header,
@@ -326,12 +334,8 @@ main {
 
 .today > div {
   display: grid;
-  grid-template-rows: auto auto;
-  gap: var(--gap-050);
-}
-
-.today > div > *:first-child {
-  align-self: end;
+  grid-template-rows: auto var(--moon);
+  gap: var(--gap-025);
 }
 
 .today > div > *:last-child {
@@ -339,7 +343,7 @@ main {
 }
 
 .moon-phase .wi {
-  font-size: 2rem;
+  font-size: var(--moon);
   line-height: 1;
 }
 
@@ -370,5 +374,16 @@ main {
 }
 
 .forecast .wi {
-  font-size: 3rem;
+  font-size: min(calc(2.1rem + 2.6vw), 3.6rem);
+}
+
+
+/* media query */
+
+@media only screen and (min-width: 800px) {
+
+  header {
+    flex-direction: row;
+  }
+
 }
