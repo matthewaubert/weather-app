@@ -89,7 +89,9 @@ export default function renderWeather(data) {
 // render location display with weather data
 function renderLocation(data) {
   location.city.innerText = data.location.city;
-  location.region.innerText = data.location.region;
+  location.region.innerText = data.location.region
+    ? `${data.location.region},`
+    : '';
   location.country.innerText = data.location.country;
   location.time.innerText = format(data.time, 'PPPPp');
 }

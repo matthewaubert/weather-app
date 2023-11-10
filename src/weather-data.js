@@ -58,7 +58,7 @@ function processData(weatherData) {
     weatherData.forecast.forecastday[0].astro.sunset,
     Math.round(weatherData.current.temp_c),
     Math.round(weatherData.current.temp_f),
-    new Date(), // NEED TO MAKE THIS ADJUST FOR TIME ZONE
+    parse(weatherData.location.localtime, 'yyyy-MM-dd kk:mm', new Date()),
     weatherData.current.uv,
     weatherData.current.wind_degree,
     Math.round(weatherData.current.wind_kph),
@@ -86,12 +86,6 @@ function processData(weatherData) {
 
   return { current, forecast };
 }
-
-// reformat weatherApi icon link to work with locally hosted icons
-// function formatIconLink(iconLink) {
-//   const splitLink = iconLink.split('/');
-//   return `./icons/${splitLink[5]}/${splitLink[6]}`;
-// }
 
 // abbreviate USA
 function formatCountry(country) {
