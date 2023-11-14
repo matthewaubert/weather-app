@@ -36,11 +36,12 @@ function deserializeLocation() {
   return localStorage.getItem('waLocation');
 }
 
-// store system in local storage
+// store system name in local storage
 function serializeSystem(system) {
   localStorage.setItem('waSystem', system);
 }
 
+// return system name from local storage
 function deserializeSystem() {
   return localStorage.getItem('waSystem');
 }

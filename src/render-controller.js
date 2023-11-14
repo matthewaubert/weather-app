@@ -1,6 +1,6 @@
 import { format } from 'date-fns';
-import wiMap from './wi-map';
-import colorMap from './color-map';
+import wiMap from './maps/wi-map';
+import colorMap from './maps/color-map';
 import {
   storageAvailable,
   serializeSystem,

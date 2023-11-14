@@ -10,11 +10,9 @@ const errorDisplay = document.querySelector('.error');
 // output: obj which contains CurrentWeather instance and array of Forecast instances
 export default async function getWeatherData(location) {
   const response = await fetchWeather(location);
-  console.log(response);
   if (response === null) return null; // if error, return null
 
   const weatherData = processData(response);
-  console.log(weatherData);
 
   return weatherData;
 }
@@ -28,7 +26,6 @@ async function fetchWeather(location) {
       `https://api.weatherapi.com/v1/forecast.json?key=${apiKey}&q=${location}&days=3`,
       { mode: 'cors' }
     );
-    console.log(response);
     // if response not okay throw error
     if (!response.ok) throw new Error(`${location} not found`);
 
