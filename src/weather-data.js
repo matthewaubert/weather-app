@@ -35,7 +35,7 @@ async function fetchWeather(location) {
     errorDisplay.innerText = '';
     const weatherData = await response.json();
     return weatherData;
-  } catch(err) {
+  } catch (err) {
     // add error text to error display
     errorDisplay.innerText = err;
     return null;
@@ -57,7 +57,7 @@ function processData(weatherData) {
     Math.round(weatherData.current.feelslike_c),
     Math.round(weatherData.current.feelslike_f),
     weatherData.current.humidity,
-    weatherData.current.is_day,
+    weatherData.current.is_day === 1,
     {
       city: weatherData.location.name,
       country: formatCountry(weatherData.location.country),

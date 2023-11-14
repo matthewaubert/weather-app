@@ -29,7 +29,7 @@ export default class CurrentWeather {
     this.feelsLikeC = feelsLikeC;
     this.feelsLikeF = feelsLikeF;
     this.humidity = humidity;
-    this.isDay = isDay === 1;
+    this.isDay = isDay;
     this.location = location;
     this.maxTempC = maxTempC;
     this.maxTempF = maxTempF;

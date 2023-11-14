@@ -55,6 +55,8 @@ const forecast = [
     condition: forecastDisplay.querySelector('.day2').children[3],
   },
 ];
+const backdrop = document.querySelector('.backdrop');
+const spinner = document.querySelector('.spinner');
 
 // add event listeners
 systemToggle.addEventListener('change', switchSystem);
@@ -80,7 +82,7 @@ function switchSystem() {
 }
 
 // run all render funcs to display weather data
-export default function renderWeather(data) {
+function renderWeather(data) {
   weatherDataCache = data; // cache weather data for later use
   renderLocation(data.current);
   renderCurrentWeatherPrimary(data.current);
@@ -167,7 +169,7 @@ function renderColorScheme(data) {
     },
   };
 
-  const dayOrNight = data.isDay ? 'day' : 'night'
+  const dayOrNight = data.isDay ? 'day' : 'night';
 
   root.style.setProperty(
     '--bg-gradient',
@@ -182,3 +184,9 @@ function renderColorScheme(data) {
     colors[colorMap[dayOrNight][data.condition.code]].textLight
   );
 }
+
+function toggleLoadingComponent() {
+  [backdrop, spinner].forEach((el) => el.classList.toggle('visible'));
+}
+
+export { renderWeather, toggleLoadingComponent };

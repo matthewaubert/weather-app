@@ -1,5 +1,5 @@
 import getWeatherData from './weather-data';
-import renderWeather from './render-controller';
+import { renderWeather, toggleLoadingComponent } from './render-controller';
 
 // cache DOM
 const form = document.querySelector('form');
@@ -12,9 +12,10 @@ initApp('philadelphia');
 
 // init page to philadelphia weather
 async function initApp(location) {
+  toggleLoadingComponent(); // show loading component
   const weatherData = await getWeatherData(location);
-  if (weatherData === null) return; // if no weather data, stop
-  renderWeather(weatherData);
+  if (weatherData !== null) renderWeather(weatherData);
+  toggleLoadingComponent(); // hide loading component
 }
 
 // prevent form submission and fetch weather
