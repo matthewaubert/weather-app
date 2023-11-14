@@ -135,9 +135,8 @@ header, main {
 /* header */
 
 header {
-  display: flex;
-  align-items: center;
-  flex-direction: column;
+  display: grid;
+  justify-items: center;
   gap: var(--gap-150) var(--gap-800);
   padding-top: var(--gap-400);
   padding-bottom: var(--gap-400);
@@ -272,6 +271,7 @@ input:checked + .slider::before {
 .error {
   color: red;
   font-weight: 700;
+  grid-column: 1 / -1;
 }
 
 
@@ -391,7 +391,7 @@ main {
 @media only screen and (min-width: 784px) {
 
   header {
-    flex-direction: row;
+    grid-template-columns: auto auto;
   }
 
 }
