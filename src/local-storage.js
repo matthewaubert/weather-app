@@ -28,12 +28,27 @@ function storageAvailable(type) {
 
 // store location in local storage
 function serializeLocation(location) {
-  localStorage.setItem('location', location);
+  localStorage.setItem('waLocation', location);
 }
 
 // return location from local storage
 function deserializeLocation() {
-  return localStorage.getItem('location');
+  return localStorage.getItem('waLocation');
 }
 
-export { storageAvailable, serializeLocation, deserializeLocation };
+// store system in local storage
+function serializeSystem(system) {
+  localStorage.setItem('waSystem', system);
+}
+
+function deserializeSystem() {
+  return localStorage.getItem('waSystem');
+}
+
+export {
+  storageAvailable,
+  serializeLocation,
+  deserializeLocation,
+  serializeSystem,
+  deserializeSystem,
+};

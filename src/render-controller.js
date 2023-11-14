@@ -1,6 +1,11 @@
 import { format } from 'date-fns';
 import wiMap from './wi-map';
 import colorMap from './color-map';
+import {
+  storageAvailable,
+  serializeSystem,
+  deserializeSystem,
+} from './local-storage';
 
 // cache DOM
 const root = document.documentElement;
@@ -66,18 +71,34 @@ let weatherDataCache;
 
 // measurement systems
 const imperial = {
+  name: 'imperial',
   temp: 'F',
   speed: 'Mph',
 };
 const metric = {
+  name: 'metric',
   temp: 'C',
   speed: 'Kph',
 };
-let system = imperial;
+let system = initSystem();
+
+// init system to value in localStorage or default to imperial
+function initSystem() {
+  if (storageAvailable('localStorage') && localStorage.getItem('waSystem')) {
+    // if system is metric, check slider and return metric
+    if (deserializeSystem() === 'metric') {
+      systemToggle.checked = true;
+      return metric;
+    }
+  }
+
+  return imperial; // default to imperial
+}
 
 // switch system between imperial and metric
 function switchSystem() {
-  system = system === imperial ? metric : imperial;
+  system = system.name === 'imperial' ? metric : imperial;
+  if (storageAvailable('localStorage')) serializeSystem(system.name); // cache system
   renderWeather(weatherDataCache);
 }
 

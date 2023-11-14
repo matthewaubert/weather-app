@@ -16,7 +16,7 @@ form.addEventListener('submit', handleSearch);
 
 // init app with weather from cached location or philadelphia
 function initApp() {
-  if (storageAvailable('localStorage') && localStorage.getItem('location')) {
+  if (storageAvailable('localStorage') && localStorage.getItem('waLocation')) {
     showWeather(deserializeLocation());
   } else {
     showWeather('philadelphia');
@@ -29,7 +29,7 @@ async function showWeather(location) {
   const weatherData = await getWeatherData(location);
   if (weatherData !== null) {
     renderWeather(weatherData);
-    serializeLocation(location); // cache location in localStorage
+    if (storageAvailable('localStorage')) serializeLocation(location); // cache location in localStorage
   }
   toggleLoadingComponent(); // hide loading component
 }
