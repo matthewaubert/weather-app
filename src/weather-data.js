@@ -69,7 +69,7 @@ function processData(weatherData) {
     weatherData.forecast.forecastday[0].astro.sunset,
     Math.round(weatherData.current.temp_c),
     Math.round(weatherData.current.temp_f),
-    parse(weatherData.location.localtime, 'yyyy-MM-dd kk:mm', new Date()),
+    parse(weatherData.location.localtime, 'yyyy-MM-dd HH:mm', new Date()),
     weatherData.current.uv,
     weatherData.current.wind_degree,
     Math.round(weatherData.current.wind_kph),
