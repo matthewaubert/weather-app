@@ -185,6 +185,7 @@ function renderColorScheme(data) {
   );
 }
 
+// toggle backdrop and spinner
 function toggleLoadingComponent() {
   [backdrop, spinner].forEach((el) => el.classList.toggle('visible'));
 }

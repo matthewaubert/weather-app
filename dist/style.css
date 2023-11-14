@@ -404,8 +404,8 @@ main {
 }
 
 .spinner {
-  width: 4.5rem;
-  height: 4.5rem;
+  width: min(calc(3.8rem + 4.25vw), 6rem);
+  height: min(calc(3.8rem + 4.25vw), 6rem);
   position: fixed;
   left: 50vw;
   top: 50vh;
