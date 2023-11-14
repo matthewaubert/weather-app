@@ -2,12 +2,17 @@ import { parse } from 'date-fns';
 import CurrentWeather from './classes/current-weather';
 import Forecast from './classes/forecast';
 
+// cache DOM
+const errorDisplay = document.querySelector('.error');
+
 // fetch and process weather data;
 // input: location;
 // output: obj which contains CurrentWeather instance and array of Forecast instances
 export default async function getWeatherData(location) {
   const response = await fetchWeather(location);
   console.log(response);
+  if (response === null) return null; // if error, return null
+
   const weatherData = processData(response);
   console.log(weatherData);
 
@@ -18,14 +23,23 @@ export default async function getWeatherData(location) {
 async function fetchWeather(location) {
   const apiKey = 'ab36ae6f835d44c781e191306230411';
 
-  const response = await fetch(
-    `https://api.weatherapi.com/v1/forecast.json?key=${apiKey}&q=${location}&days=3`,
-    { mode: 'cors' }
-  );
-  const weatherData = await response.json();
-  // HANDLE ERRORS!
+  try {
+    const response = await fetch(
+      `https://api.weatherapi.com/v1/forecast.json?key=${apiKey}&q=${location}&days=3`,
+      { mode: 'cors' }
+    );
+    console.log(response);
+    // if response not okay throw error
+    if (!response.ok) throw new Error(`${location} not found`);
 
-  return weatherData;
+    errorDisplay.innerText = '';
+    const weatherData = await response.json();
+    return weatherData;
+  } catch(err) {
+    // add error text to error display
+    errorDisplay.innerText = err;
+    return null;
+  }
 }
 
 // process weather API json data into data which app can read
